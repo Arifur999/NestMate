@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router"; 
+import { createBrowserRouter } from "react-router";
 import App from "../App";
 import Home from "../pages/Home";
 import AddRoommate from "../pages/AddRoommate";
@@ -6,7 +6,7 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import BrowseListings from "../pages/BrowseListings";
 import MyListings from "../pages/MyListings";
-import RoommateDetails from "../pages/RoommateDetails"; 
+import RoommateDetails from "../pages/RoommateDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/browse-listings",
+        loader: () => fetch("http://localhost:3000/roommates"),
         Component: BrowseListings,
       },
       {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
         Component: MyListings,
       },
       {
-        path: "/roommates/:id", 
+        path: "/roommates/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
         Component: RoommateDetails,
