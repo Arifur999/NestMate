@@ -30,7 +30,7 @@ const Navbar = () => {
   const linkStyle =
     'flex items-center gap-1 text-gray-700 dark:text-gray-200 font-medium hover:text-indigo-600 transition duration-300';
   const activeLinkStyle = 'text-indigo-600 dark:text-indigo-400 font-semibold';
-
+console.log(user);
   return (
     <header className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
       <div className="lg:w-10/12 w-11/12 mx-auto py-4 flex justify-between items-center">
@@ -38,14 +38,13 @@ const Navbar = () => {
         <NavLink to="/" className="flex items-center gap-2 text-2xl font-bold text-indigo-600">
           {/* Optional dark mode logo handling */}
           <picture>
-            {/* <source srcSet="/logo-dark.png" media="(prefers-color-scheme: dark)" /> */}
             <img
-              src="/logo1.png"
+              src="/logo2.png"
               alt="NestMate Logo"
-              className="w-8 h-8 object-contain drop-shadow-sm"
+              className="w-full h-12 object-contain drop-shadow-sm"
             />
-          </picture>
-          Nest<span className="text-gray-600 dark:text-white">Mate</span>
+          </picture><h1>
+          Nest<span className="text-gray-600 dark:text-white">Mate</span></h1>
         </NavLink>
 
         {/* Desktop Nav */}

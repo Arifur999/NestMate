@@ -15,7 +15,7 @@ const SignUp = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-
+    // const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
 
