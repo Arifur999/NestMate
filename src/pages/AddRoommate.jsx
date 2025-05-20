@@ -1,6 +1,52 @@
-import React from 'react';
+import React from "react";
+ import Swal from 'sweetalert2';
 
 const AddRoommate = () => {
+
+const handleAddData = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const addData = Object.fromEntries(formData.entries());
+
+  fetch('http://localhost:3000/roommates', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(addData)
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.insertedId || data.acknowledged) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Roommate listing added successfully!',
+          icon: 'success',
+          confirmButtonColor: '#6366F1', // Indigo
+        });
+        form.reset(); // Optional: reset form after success
+      } else {
+        Swal.fire({
+          title: 'Failed!',
+          text: 'Could not add listing. Please try again.',
+          icon: 'error',
+          confirmButtonColor: '#EF4444', // Red
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Error adding roommate:", error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Something went wrong. Please try again later.',
+        icon: 'error',
+        confirmButtonColor: '#EF4444',
+      });
+    });
+};
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-white py-16 px-4">
       <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-2xl border border-indigo-100">
@@ -8,7 +54,7 @@ const AddRoommate = () => {
           Add a Roommate Listing
         </h2>
 
-        <form className="space-y-6">
+        <form onSubmit={handleAddData} className="space-y-6">
           {/* Title */}
           <input
             type="text"
@@ -105,7 +151,7 @@ const AddRoommate = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-4 rounded-xl text-lg font-semibold hover:bg-indigo-700 shadow-md transition duration-300"
+            className="w-full bg-indigo-600 text-white py-4 rounded-xl text-lg font-semibold hover:bg-indigo-700 cursor-pointer shadow-md transition duration-300"
           >
             ➕ Add Listing
           </button>

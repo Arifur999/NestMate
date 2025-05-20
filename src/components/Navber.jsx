@@ -36,7 +36,15 @@ const Navbar = () => {
       <div className="lg:w-10/12 w-11/12 mx-auto py-4 flex justify-between items-center">
         {/* Brand */}
         <NavLink to="/" className="flex items-center gap-2 text-2xl font-bold text-indigo-600">
-          <img src="/logo1.png" alt="NestMate Logo" className="w-8 h-8 object-contain" />
+          {/* Optional dark mode logo handling */}
+          <picture>
+            {/* <source srcSet="/logo-dark.png" media="(prefers-color-scheme: dark)" /> */}
+            <img
+              src="/logo1.png"
+              alt="NestMate Logo"
+              className="w-8 h-8 object-contain drop-shadow-sm"
+            />
+          </picture>
           Nest<span className="text-gray-600 dark:text-white">Mate</span>
         </NavLink>
 
