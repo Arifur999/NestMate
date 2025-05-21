@@ -12,9 +12,10 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
 
 const RoommateDetails = () => {
-  const roommate = useLoaderData();
+  const loadedRoommate = useLoaderData();
   const { user } = useContext(AuthContext);
 
+  const [roommate, setRoommate] = useState(loadedRoommate);
   const [liked, setLiked] = useState(roommate.likedBy?.includes(user.email));
   const [showContact, setShowContact] = useState(
     roommate.likedBy?.includes(user.email)
@@ -65,6 +66,7 @@ const RoommateDetails = () => {
       if (res.ok && data.modifiedCount > 0) {
         setLiked(true);
         setShowContact(true);
+        setRoommate(data.updatedRoommate); // update local state with new like data
         Swal.fire({
           icon: "success",
           title: "Liked!",
@@ -83,6 +85,8 @@ const RoommateDetails = () => {
     }
   };
 
+  const likeCount = roommate.likedBy?.length || 0;
+
   return (
     <div className="w-11/12 mx-auto max-w-5xl my-12">
       {/* Header */}
@@ -92,6 +96,9 @@ const RoommateDetails = () => {
         </h1>
         <p className="text-gray-600 text-lg max-w-xl mx-auto">
           Here's everything you need to know before choosing your perfect match!
+        </p>
+        <p className="text-xl font-medium text-indigo-600 mt-3">
+          ❤️ {likeCount} people interested in
         </p>
       </div>
 

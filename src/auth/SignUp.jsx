@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router"; 
 import { FcGoogle } from "react-icons/fc";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
@@ -19,6 +19,19 @@ const SignUp = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
+
+    // Password validation
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+
+    if (!hasUppercase || !hasLowercase) {
+      Swal.fire({
+        icon: "warning",
+        title: "Weak Password",
+        text: "Password must include both uppercase and lowercase letters.",
+      });
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -95,6 +108,9 @@ const SignUp = () => {
             >
               {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
             </div>
+            <small className="text-gray-500 mt-1 block ml-1">
+              Must include uppercase & lowercase letters
+            </small>
           </div>
 
           <button

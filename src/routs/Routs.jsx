@@ -7,6 +7,7 @@ import SignUp from "../auth/SignUp";
 import BrowseListings from "../pages/BrowseListings";
 import MyListings from "../pages/MyListings";
 import RoommateDetails from "../pages/RoommateDetails";
+import UpdateRoommates from "../pages/UpdateRoommates";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
         Component: RoommateDetails,
+      },
+      {
+        path: "/roommates/update/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/roommates/${params.id}`),
+        Component: UpdateRoommates,
       },
     ],
   },
