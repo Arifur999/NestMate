@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Authentication/AuthContext';
 import Swal from 'sweetalert2';
+import { Tooltip } from 'react-tooltip'; 
+import 'react-tooltip/dist/react-tooltip.css'; 
 import {
   AiOutlineHome,
   AiOutlineUserAdd,
@@ -45,6 +47,9 @@ const Navbar = () => {
 
   return (
     <header className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
+      {/* ✅ Tooltip component (must be outside of conditional logic) */}
+      <Tooltip id="navbar-tooltip" place="bottom" className="z-50" />
+      
       <div className="lg:w-10/12 w-11/12 mx-auto py-4 flex justify-between items-center">
         <NavLink to="/" className="flex items-center text-2xl font-bold text-indigo-600">
           <img src="/logo2.png" alt="NestMate Logo" className="w-full h-12 object-contain drop-shadow-sm" />
@@ -72,7 +77,8 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
-            aria-label="Toggle Theme"
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             {theme === 'dark' ? <BsSun /> : <BsMoon />}
           </button>
@@ -84,6 +90,8 @@ const Navbar = () => {
                 src={user.photoURL}
                 alt={user.displayName}
                 className="w-10 h-10 rounded-full border-2 border-indigo-600 cursor-pointer"
+                data-tooltip-id="navbar-tooltip"
+                data-tooltip-content={user.displayName}
               />
               <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg rounded-xl p-4 hidden group-hover:block group-focus:block z-50">
                 <p className="text-sm text-gray-800 dark:text-white font-semibold">{user.displayName}</p>
@@ -98,10 +106,20 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <NavLink to="/login" className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}
+                data-tooltip-id="navbar-tooltip"
+                data-tooltip-content="Login to your account"
+              >
                 <AiOutlineLogin /> Login
               </NavLink>
-              <NavLink to="/signup" className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}>
+              <NavLink
+                to="/signup"
+                className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}
+                data-tooltip-id="navbar-tooltip"
+                data-tooltip-content="Create a new account"
+              >
                 <AiOutlineUser /> Signup
               </NavLink>
             </>
@@ -139,15 +157,16 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
-            aria-label="Toggle Theme"
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             {theme === 'dark' ? <BsSun /> : <BsMoon />}
           </button>
 
           {!user ? (
             <>
-              <NavLink to="/login" className={linkStyle}><AiOutlineLogin /> Login</NavLink>
-              <NavLink to="/signup" className={linkStyle}><AiOutlineUser /> Signup</NavLink>
+              <NavLink to="/login" className={linkStyle} data-tooltip-id="navbar-tooltip" data-tooltip-content="Login to your account"><AiOutlineLogin /> Login</NavLink>
+              <NavLink to="/signup" className={linkStyle} data-tooltip-id="navbar-tooltip" data-tooltip-content="Create a new account"><AiOutlineUser /> Signup</NavLink>
             </>
           ) : (
             <>
