@@ -8,6 +8,7 @@ import BrowseListings from "../pages/BrowseListings";
 import MyListings from "../pages/MyListings";
 import RoommateDetails from "../pages/RoommateDetails";
 import UpdateRoommates from "../pages/UpdateRoommates";
+import PrivateRouts from "../components/PrivateRouts";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-roommate",
-        Component: AddRoommate,
+        element: (
+          <PrivateRouts>
+            <AddRoommate></AddRoommate>
+          </PrivateRouts>
+        ),
+         
       },
       {
         path: "/login",
@@ -38,19 +44,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-listings",
-        Component: MyListings,
+         element: (
+          <PrivateRouts>
+            < MyListings></ MyListings>
+          </PrivateRouts>
+        ),
       },
       {
         path: "/roommates/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-        Component: RoommateDetails,
+          element: (
+          <PrivateRouts>
+            <RoommateDetails></RoommateDetails>
+          </PrivateRouts>
+        ),
       },
       {
         path: "/roommates/update/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-        Component: UpdateRoommates,
+         element: (
+          <PrivateRouts>
+            <UpdateRoommates></UpdateRoommates>
+          </PrivateRouts>
+        ),
       },
     ],
   },
