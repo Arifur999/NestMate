@@ -9,6 +9,7 @@ import MyListings from "../pages/MyListings";
 import RoommateDetails from "../pages/RoommateDetails";
 import UpdateRoommates from "../pages/UpdateRoommates";
 import PrivateRouts from "../components/PrivateRouts";
+import Loader from "../components/Loader";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         loader: () => fetch("http://localhost:3000/roommates"),
+        hydrateFallbackElement: <Loader></Loader>,
         Component: Home,
       },
       {
@@ -27,7 +29,6 @@ const router = createBrowserRouter([
             <AddRoommate></AddRoommate>
           </PrivateRouts>
         ),
-         
       },
       {
         path: "/login",
@@ -40,13 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/browse-listings",
         loader: () => fetch("http://localhost:3000/roommates"),
+                hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseListings,
       },
       {
         path: "/my-listings",
-         element: (
+        element: (
           <PrivateRouts>
-            < MyListings></ MyListings>
+            <MyListings></MyListings>
           </PrivateRouts>
         ),
       },
@@ -54,7 +56,8 @@ const router = createBrowserRouter([
         path: "/roommates/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-          element: (
+                hydrateFallbackElement: <Loader></Loader>,
+        element: (
           <PrivateRouts>
             <RoommateDetails></RoommateDetails>
           </PrivateRouts>
@@ -64,7 +67,8 @@ const router = createBrowserRouter([
         path: "/roommates/update/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-         element: (
+                hydrateFallbackElement: <Loader></Loader>,
+        element: (
           <PrivateRouts>
             <UpdateRoommates></UpdateRoommates>
           </PrivateRouts>

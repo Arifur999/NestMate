@@ -11,7 +11,7 @@ const Home = () => {
       <Hero />
 
       {/* Roommate Section */}
-      <section className="py-10 px-4 bg-white">
+      <section className="py-10 px-4 bg-white ">
         <div className="max-w-7xl mx-auto">
           {/* Heading */}
           <div className="text-center mb-10">

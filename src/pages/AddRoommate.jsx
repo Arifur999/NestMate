@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Authentication/AuthContext';  
-import { useNavigate } from 'react-router';
 
 const AddRoommate = () => {
   const { user } = useContext(AuthContext);

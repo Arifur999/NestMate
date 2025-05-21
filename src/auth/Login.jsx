@@ -119,7 +119,7 @@ const Login = () => {
         {/* Google Login */}
         <button
           type="button"
-          onClick={handleGoogleSignIn} // ✅ important!
+          onClick={handleGoogleSignIn} 
           className="w-full flex items-center justify-center gap-2 bg-white border py-3 rounded-lg hover:bg-gray-50 transition"
         >
           <FcGoogle className="text-xl" />

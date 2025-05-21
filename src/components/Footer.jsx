@@ -15,9 +15,17 @@ const Footer = () => {
         <div>
           <NavLink
             to="/"
-            className="flex items-center gap-2 text-2xl font-bold text-indigo-600"
+            className="flex items-center w-20 text-2xl font-bold text-indigo-600 "
           >
-            Nest<span className="text-gray-600 dark:text-white">Mate</span>
+            <img
+              src="/logo2.png"
+              alt="NestMate Logo"
+              className="w-full h-12 object-contain drop-shadow-sm"
+            />
+            <h1>
+              {" "}
+              Nest<span className="text-gray-600 dark:text-white">Mate</span>
+            </h1>
           </NavLink>{" "}
           <p className="text-gray-400 text-sm leading-relaxed">
             Your trusted platform to find compatible roommates and shared spaces

@@ -133,7 +133,7 @@ const SignUp = () => {
           className="w-full flex items-center justify-center gap-2 bg-white border py-3 rounded-lg hover:bg-gray-100 transition cursor-pointer"
         >
           <FcGoogle className="text-xl" />
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-gray-700 cursor-pointer">
             Sign Up with Google
           </span>
         </button>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Authentication/AuthContext';
 import Swal from 'sweetalert2';
@@ -10,11 +10,23 @@ import {
   AiOutlineLogin,
   AiOutlineUser,
 } from 'react-icons/ai';
+import { BsSun, BsMoon } from 'react-icons/bs';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   const handleLogout = () => {
     logout()
@@ -34,11 +46,14 @@ const Navbar = () => {
   return (
     <header className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
       <div className="lg:w-10/12 w-11/12 mx-auto py-4 flex justify-between items-center">
-        <NavLink to="/" className="flex items-center gap-2 text-2xl font-bold text-indigo-600">
+        <NavLink to="/" className="flex items-center text-2xl font-bold text-indigo-600">
           <img src="/logo2.png" alt="NestMate Logo" className="w-full h-12 object-contain drop-shadow-sm" />
-          <h1> Nest<span className="text-gray-600 dark:text-white">Mate</span></h1>
+          <h1>
+            Nest<span className="text-gray-600 dark:text-white">Mate</span>
+          </h1>
         </NavLink>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <NavLink to="/" className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}>
             <AiOutlineHome /> Home
@@ -53,6 +68,16 @@ const Navbar = () => {
             <AiOutlineFileSearch /> My Listings
           </NavLink>
 
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+          </button>
+
+          {/* User Profile or Auth Links */}
           {user ? (
             <div className="relative group" tabIndex={0}>
               <img
@@ -83,6 +108,7 @@ const Navbar = () => {
           )}
         </nav>
 
+        {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <svg
@@ -102,12 +128,21 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg px-6 py-4 rounded-b-xl space-y-3 animate-slideDown">
           <NavLink to="/" className={linkStyle}><AiOutlineHome /> Home</NavLink>
           <NavLink to="/add-roommate" className={linkStyle}><AiOutlineUserAdd /> Add Roommate</NavLink>
           <NavLink to="/browse-listings" className={linkStyle}><AiOutlineUnorderedList /> Browse Listings</NavLink>
           <NavLink to="/my-listings" className={linkStyle}><AiOutlineFileSearch /> My Listings</NavLink>
+
+          <button
+            onClick={toggleTheme}
+            className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+          </button>
 
           {!user ? (
             <>
