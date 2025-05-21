@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLoaderData } from "react-router";
 import {
   FaMapMarkerAlt,
@@ -8,13 +8,79 @@ import {
   FaTimesCircle,
   FaHeart,
 } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Authentication/AuthContext";
 
 const RoommateDetails = () => {
   const roommate = useLoaderData();
-  const [liked, setLiked] = useState(false);
+  const { user } = useContext(AuthContext);
 
-  const handleLike = () => {
-    setLiked(!liked);
+  const [liked, setLiked] = useState(roommate.likedBy?.includes(user.email));
+  const [showContact, setShowContact] = useState(
+    roommate.likedBy?.includes(user.email)
+  );
+
+  const handleLike = async () => {
+    if (roommate.userEmail === user.email) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops!",
+        text: "You cannot like your own post!",
+      });
+      return;
+    }
+
+    if (liked) {
+      Swal.fire({
+        icon: "info",
+        title: "Already Liked",
+        text: "You have already liked this post.",
+      });
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/roommates/${roommate._id}/like`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userEmail: user.email }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (res.status === 403 || res.status === 400 || res.status === 404) {
+        Swal.fire({
+          icon: "error",
+          title: "Action Failed",
+          text: data.message || "Something went wrong",
+        });
+        return;
+      }
+
+      if (res.ok && data.modifiedCount > 0) {
+        setLiked(true);
+        setShowContact(true);
+        Swal.fire({
+          icon: "success",
+          title: "Liked!",
+          text: "Contact number unlocked.",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.error("Error liking roommate:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Network Error",
+        text: "Something went wrong. Please try again.",
+      });
+    }
   };
 
   return (
@@ -32,11 +98,15 @@ const RoommateDetails = () => {
       {/* Card */}
       <div className="p-8 bg-white rounded-2xl shadow-2xl space-y-6">
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold text-indigo-700">{roommate.title}</h2>
+          <h2 className="text-3xl font-bold text-indigo-700">
+            {roommate.title}
+          </h2>
           <button
             onClick={handleLike}
             className={`text-2xl transition ${
-              liked ? "text-red-500 scale-110" : "text-gray-400 hover:text-red-400"
+              liked
+                ? "text-red-500 scale-110"
+                : "text-gray-400 hover:text-red-400"
             }`}
             title={liked ? "Liked" : "Like"}
           >
@@ -51,7 +121,7 @@ const RoommateDetails = () => {
           </p>
           <p className="flex items-center gap-2">
             <FaMoneyBillWave className="text-green-500" />
-            <strong>Rent:</strong> ${roommate.rent}
+            <strong>Rent:</strong> ৳{roommate.rent}
           </p>
           <p className="flex items-center gap-2">
             <FaHome className="text-purple-500" />
@@ -59,7 +129,9 @@ const RoommateDetails = () => {
           </p>
           <p
             className={`flex items-center gap-2 font-semibold ${
-              roommate.availability === "available" ? "text-green-600" : "text-red-500"
+              roommate.availability === "available"
+                ? "text-green-600"
+                : "text-red-500"
             }`}
           >
             {roommate.availability === "available" ? (
@@ -72,9 +144,19 @@ const RoommateDetails = () => {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">Description</h3>
-          <p className="text-gray-600 leading-relaxed">{roommate.description}</p>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            Description
+          </h3>
+          <p className="text-gray-600 leading-relaxed">
+            {roommate.description}
+          </p>
         </div>
+
+        {showContact && (
+          <p className="text-lg text-indigo-700 font-medium">
+            📞 Contact: {roommate.contact}
+          </p>
+        )}
       </div>
     </div>
   );

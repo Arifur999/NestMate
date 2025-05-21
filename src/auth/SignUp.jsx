@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { createUser, googleSignIn } = useContext(AuthContext);
@@ -14,56 +15,37 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
-    // const name = formData.get("name");
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
 
     createUser(email, password)
       .then((result) => {
-        console.log(result);
-        form.reset();
+        const user = result.user;
 
-        Swal.fire({
-          title: "Success!",
-          text: "Account created successfully",
-          icon: "success",
-          confirmButtonText: "OK",
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          Swal.fire("Success!", "Account created successfully", "success");
+          form.reset();
+          navigate("/");
         });
-
-        navigate("/");
       })
       .catch((error) => {
-        console.error(error);
-        Swal.fire({
-          title: "Error!",
-          text: error.message,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
+        Swal.fire("Error!", error.message, "error");
       });
   };
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          title: "Success!",
-          text: "Signed in with Google successfully",
-          icon: "success",
-          confirmButtonText: "OK",
-        });
+        Swal.fire("Success!", "Signed in with Google", "success");
         navigate("/");
       })
       .catch((error) => {
-        console.error(error);
-        Swal.fire({
-          title: "Error!",
-          text: error.message,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
+        Swal.fire("Error!", error.message, "error");
       });
   };
 
@@ -75,7 +57,6 @@ const SignUp = () => {
         </h2>
 
         <form onSubmit={handleSignUp} className="space-y-5">
-          {/* Name */}
           <input
             type="text"
             name="name"
@@ -84,7 +65,6 @@ const SignUp = () => {
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
 
-          {/* Email */}
           <input
             type="email"
             name="email"
@@ -93,7 +73,6 @@ const SignUp = () => {
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
 
-          {/* Photo URL */}
           <input
             type="url"
             name="photo"
@@ -102,7 +81,6 @@ const SignUp = () => {
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
 
-          {/* Password */}
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -119,7 +97,6 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Sign Up Button */}
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white py-3 cursor-pointer rounded-lg font-semibold hover:bg-indigo-700 transition duration-300"
@@ -128,14 +105,12 @@ const SignUp = () => {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="flex items-center my-4">
           <hr className="flex-grow border-gray-300" />
           <span className="mx-3 text-gray-500">or</span>
           <hr className="flex-grow border-gray-300" />
         </div>
 
-        {/* Google Sign In */}
         <button
           type="button"
           onClick={handleGoogleSignIn}
@@ -147,7 +122,6 @@ const SignUp = () => {
           </span>
         </button>
 
-        {/* Login Redirect */}
         <p className="text-center text-gray-600 mt-6">
           Already have an account?{" "}
           <Link
