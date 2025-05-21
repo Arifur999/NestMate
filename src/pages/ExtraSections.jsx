@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, UserPlus, Search, CheckCircle } from 'lucide-react';
+import CountUp from 'react-countup';
 
 const ExtraSections = () => {
   return (
@@ -62,34 +63,47 @@ const ExtraSections = () => {
       </section>
 
       {/* Section 3: Impact Stats */}
-      <section className="bg-gray-100 py-20 px-4 md:px-16">
+      <section className="bg-base-100 py-20 px-4 md:px-16 text-base-content">
   <div className="max-w-6xl mx-auto text-center mb-12">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+    <h2 className="text-3xl md:text-4xl font-bold text-primary">
       Trusted by Thousands Across the Country
     </h2>
-    <p className="mt-3 text-gray-600 max-w-xl mx-auto">
+    <p className="mt-3 max-w-xl mx-auto">
       From finding roommates to building long-lasting connections — NestMate is changing the way people co-live.
     </p>
   </div>
 
   <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-    <div className="bg-white py-8 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-      <h3 className="text-5xl font-bold text-indigo-600 mb-2">95%</h3>
-      <p className="text-lg font-semibold text-gray-700">Match Satisfaction</p>
-      <p className="text-sm text-gray-500 mt-1">Users found compatible roommates within days.</p>
+    <div className="card bg-base-200 shadow-md hover:shadow-lg transition duration-300">
+      <div className="card-body">
+        <h3 className="text-5xl font-bold text-primary mb-2">
+          <CountUp end={95} duration={7} suffix="%" />
+        </h3>
+        <p className="text-lg font-semibold">Match Satisfaction</p>
+        <p className="text-sm mt-1">Users found compatible roommates within days.</p>
+      </div>
     </div>
-    <div className="bg-white py-8 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-      <h3 className="text-5xl font-bold text-indigo-600 mb-2">4.8/5</h3>
-      <p className="text-lg font-semibold text-gray-700">Average Rating</p>
-      <p className="text-sm text-gray-500 mt-1">Rated across multiple platforms by verified users.</p>
+    <div className="card bg-base-200 shadow-md hover:shadow-lg transition duration-300">
+      <div className="card-body">
+        <h3 className="text-5xl font-bold text-primary mb-2">
+          <CountUp end={4.8} duration={7} decimals={1} suffix="/5" />
+        </h3>
+        <p className="text-lg font-semibold">Average Rating</p>
+        <p className="text-sm mt-1">Rated across multiple platforms by verified users.</p>
+      </div>
     </div>
-    <div className="bg-white py-8 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-      <h3 className="text-5xl font-bold text-indigo-600 mb-2">30K+</h3>
-      <p className="text-lg font-semibold text-gray-700">Successful Matches</p>
-      <p className="text-sm text-gray-500 mt-1">Real connections. Real roommates. Real impact.</p>
+    <div className="card bg-base-200 shadow-md hover:shadow-lg transition duration-300">
+      <div className="card-body">
+        <h3 className="text-5xl font-bold text-primary mb-2">
+          <CountUp end={30} duration={7} suffix="K+" />
+        </h3>
+        <p className="text-lg font-semibold">Successful Matches</p>
+        <p className="text-sm mt-1">Real connections. Real roommates. Real impact.</p>
+      </div>
     </div>
   </div>
 </section>
+
 
     </div>
   );
