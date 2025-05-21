@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/browse-listings",
-        loader: () => fetch("http://localhost:3000/roommates"),
+        loader: () => fetch("http://localhost:3000/roommates/featured"),
                 hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseListings,
       },

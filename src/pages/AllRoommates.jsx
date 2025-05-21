@@ -11,7 +11,6 @@ import {
 import { Fade } from "react-awesome-reveal";
 
 const AllRoommates = ({ roommate }) => {
-  if (!roommate || roommate.availability !== "available") return null;
 
   const {
     _id,
