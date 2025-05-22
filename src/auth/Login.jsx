@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Authentication/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const { signInUser, googleSignIn } = useContext(AuthContext);

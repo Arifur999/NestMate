@@ -115,7 +115,7 @@ const RoommateDetails = () => {
           </h2>
           <button
             onClick={handleLike}
-            className={`text-2xl transition ${
+            className={`text-2xl transition cursor-pointer ${
               liked
                 ? "text-red-500 scale-110"
                 : "text-gray-400 hover:text-red-400"

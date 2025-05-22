@@ -76,7 +76,7 @@ const Navbar = () => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
+            className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition cursor-pointer"
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
