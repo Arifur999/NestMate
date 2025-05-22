@@ -49,15 +49,15 @@ const MyListings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white py-10 px-4">
-      <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-3xl p-6 sm:p-10 border border-indigo-100">
+    <div className="min-h-screen card bg-base-200  py-10 px-4">
+      <div className="max-w-6xl mx-auto bg-base-100 shadow-xl rounded-3xl p-6 sm:p-10 border border-indigo-100">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-indigo-700 mb-6 sm:mb-10">
           🏠 My Roommate Listings
         </h1>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-full table-auto border text-sm sm:text-base">
-            <thead className="bg-indigo-100 text-indigo-800 uppercase text-xs sm:text-sm">
+        <div className="overflow-x-auto rounded-lg shadow-xl min-w-full text-sm md:text-base text-left text-gray-700 border border-gray-200">
+          <table className="min-w-full table-auto border text-sm sm:text-base ">
+            <thead className="  uppercase text-xs sm:text-sm bg-indigo-600 text-white">
               <tr>
                 <th className="px-3 sm:px-6 py-3 text-left">Title</th>
                 <th className="px-3 sm:px-6 py-3 text-left">Location</th>

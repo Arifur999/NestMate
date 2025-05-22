@@ -24,8 +24,8 @@ const AllRoommates = ({ roommate }) => {
 
   return (
     <Fade triggerOnce direction="up" duration={700}>
-      <div className="flex flex-col justify-between h-full rounded-2xl overflow-hidden shadow-xl bg-white border border-indigo-100 hover:shadow-2xl transition duration-300">
-        <div className="p-6 flex flex-col justify-between h-full space-y-3">
+      <div className="flex flex-col justify-between h-full rounded-2xl overflow-hidden shadow-xl bg-base-100 text-base-content border border-indigo-100 hover:shadow-2xl transition duration-300">
+        <div className="p-6 flex flex-col justify-between h-full space-y-3 ">
           <div>
             <h3 className="text-xl font-bold text-indigo-700">{title}</h3>
 

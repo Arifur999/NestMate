@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import Swal from 'sweetalert2';
-import { AuthContext } from '../Authentication/AuthContext';  
+import React, { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Authentication/AuthContext";
 
 const AddRoommate = () => {
   const { user } = useContext(AuthContext);
@@ -11,10 +11,10 @@ const AddRoommate = () => {
     const formData = new FormData(form);
     const addData = Object.fromEntries(formData.entries());
 
-    fetch('http://localhost:3000/roommates', {
-      method: 'POST',
+    fetch("http://localhost:3000/roommates", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(addData),
     })
@@ -22,35 +22,35 @@ const AddRoommate = () => {
       .then((data) => {
         if (data.insertedId || data.acknowledged) {
           Swal.fire({
-            title: 'Success!',
-            text: 'Roommate listing added successfully!',
-            icon: 'success',
-            confirmButtonColor: '#6366F1',
+            title: "Success!",
+            text: "Roommate listing added successfully!",
+            icon: "success",
+            confirmButtonColor: "#6366F1",
           });
           form.reset();
         } else {
           Swal.fire({
-            title: 'Failed!',
-            text: 'Could not add listing. Please try again.',
-            icon: 'error',
-            confirmButtonColor: '#EF4444',
+            title: "Failed!",
+            text: "Could not add listing. Please try again.",
+            icon: "error",
+            confirmButtonColor: "#EF4444",
           });
         }
       })
       .catch((error) => {
-        console.error('Error adding roommate:', error);
+        console.error("Error adding roommate:", error);
         Swal.fire({
-          title: 'Error!',
-          text: 'Something went wrong. Please try again later.',
-          icon: 'error',
-          confirmButtonColor: '#EF4444',
+          title: "Error!",
+          text: "Something went wrong. Please try again later.",
+          icon: "error",
+          confirmButtonColor: "#EF4444",
         });
       });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-white py-16 px-4">
-      <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-2xl border border-indigo-100">
+    <div className="min-h-screen bg-base-100  py-16 px-4">
+      <div className="max-w-4xl mx-auto  card bg-base-200 p-10 rounded-3xl shadow-2xl border border-indigo-100">
         <h2 className="text-4xl font-extrabold text-center text-indigo-700 mb-10">
           Add a Roommate Listing
         </h2>
@@ -62,7 +62,7 @@ const AddRoommate = () => {
             name="title"
             placeholder="e.g., Looking for a roommate in NYC"
             required
-            className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className=" p-4 border input input-bordered w-full border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
           />
 
           {/* Location and Rent */}
@@ -72,14 +72,14 @@ const AddRoommate = () => {
               name="location"
               placeholder="Location"
               required
-              className="w-full p-4 border border-gray-300 rounded-xl"
+              className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl"
             />
             <input
               type="number"
               name="rent"
               placeholder="Rent Amount ($)"
               required
-              className="w-full p-4 border border-gray-300 rounded-xl"
+              className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl"
             />
           </div>
 
@@ -88,7 +88,7 @@ const AddRoommate = () => {
             <select
               name="roomType"
               required
-              className="w-full p-4 border border-gray-300 rounded-xl bg-white"
+              className="select select-bordered w-full bg-base-100 text-neutral"
             >
               <option value="">Select Room Type</option>
               <option value="Single">Single</option>
@@ -99,7 +99,7 @@ const AddRoommate = () => {
             <select
               name="availability"
               required
-              className="w-full p-4 border border-gray-300 rounded-xl bg-white"
+              className="select select-bordered w-full bg-base-100 text-neutral"
             >
               <option value="available">Available</option>
               <option value="not-available">Not Available</option>
@@ -111,7 +111,7 @@ const AddRoommate = () => {
             type="text"
             name="lifestyle"
             placeholder="Lifestyle Preferences (Pets, Smoking, Night Owl, etc.)"
-            className="w-full p-4 border border-gray-300 rounded-xl"
+            className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl"
           />
 
           {/* Description */}
@@ -120,7 +120,7 @@ const AddRoommate = () => {
             rows="4"
             placeholder="Describe your listing and roommate expectations..."
             required
-            className="w-full p-4 border border-gray-300 rounded-xl"
+            className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl"
           />
 
           {/* Contact Info */}
@@ -129,7 +129,7 @@ const AddRoommate = () => {
             name="contact"
             placeholder="Your Contact Info (Phone, WhatsApp, or Email)"
             required
-            className="w-full p-4 border border-gray-300 rounded-xl"
+            className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl"
           />
 
           {/* User Info - Auto filled from Firebase Auth */}
@@ -137,16 +137,16 @@ const AddRoommate = () => {
             <input
               type="text"
               name="userName"
-              value={user?.displayName || 'Anonymous'}
+              value={user?.displayName || "Anonymous"}
               readOnly
-              className="w-full p-4 border border-gray-300 rounded-xl bg-gray-100 cursor-not-allowed"
+              className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl bg-base-100 cursor-not-allowed"
             />
             <input
               type="email"
               name="userEmail"
-              value={user?.email || ''}
+              value={user?.email || ""}
               readOnly
-              className="w-full p-4 border border-gray-300 rounded-xl bg-gray-100 cursor-not-allowed"
+              className="w-full p-4 border input input-bordered  border-gray-300 rounded-xl bg-base-100 cursor-not-allowed"
             />
           </div>
 

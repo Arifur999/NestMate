@@ -10,11 +10,14 @@ import RoommateDetails from "../pages/RoommateDetails";
 import UpdateRoommates from "../pages/UpdateRoommates";
 import PrivateRouts from "../components/PrivateRouts";
 import Loader from "../components/Loader";
+import ErrorPage from "../components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <ErrorPage></ErrorPage>,
+
     children: [
       {
         path: "/",
@@ -41,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/browse-listings",
         loader: () => fetch("http://localhost:3000/roommates/featured"),
-                hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseListings,
       },
       {
@@ -56,7 +59,7 @@ const router = createBrowserRouter([
         path: "/roommates/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-                hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRouts>
             <RoommateDetails></RoommateDetails>
@@ -67,7 +70,7 @@ const router = createBrowserRouter([
         path: "/roommates/update/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/roommates/${params.id}`),
-                hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRouts>
             <UpdateRoommates></UpdateRoommates>
