@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate } from "react-router";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateRoommates = () => {
   const roommate = useLoaderData();
@@ -24,7 +25,7 @@ const UpdateRoommates = () => {
   const handleSubmit = (e) => {
   e.preventDefault();
 
-  fetch(`http://localhost:3000/roommates/${roommate._id}`, {
+  fetch(`https://assingment-10-server-gold.vercel.app/roommates/${roommate._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -55,6 +56,10 @@ const UpdateRoommates = () => {
 
 
   return (
+  <>
+  <Helmet>
+      <title>NestMate || Update</title>
+    </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white p-6">
       <div className="max-w-2xl mx-auto bg-white p-8 shadow-xl rounded-3xl border border-indigo-100">
         <h2 className="text-3xl font-bold text-indigo-700 mb-6 text-center">
@@ -171,6 +176,7 @@ const UpdateRoommates = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

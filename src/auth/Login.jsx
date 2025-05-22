@@ -62,6 +62,10 @@ const Login = () => {
   };
 
   return (
+    <>
+<Helmet>
+      <title>NestMate || LogIn</title>
+    </Helmet>
     <div className="min-h-screen flex items-center justify-center card bg-base-200 px-4">
       <div className="max-w-md w-full bg-base-100 p-8 rounded-2xl shadow-xl">
         <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">Welcome Back</h2>
@@ -135,6 +139,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

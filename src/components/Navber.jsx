@@ -88,6 +88,7 @@ const Navbar = () => {
             <div className="relative group" tabIndex={0}>
               <img
                 src={user.photoURL}
+                referrerPolicy='no-referrer'
                 alt={user.displayName}
                 className="w-10 h-10 rounded-full border-2 border-indigo-600 cursor-pointer"
                 data-tooltip-id="navbar-tooltip"

@@ -3,11 +3,15 @@ import Hero from "./Hero";
 import ExtraSections from "./ExtraSections";
 import AllRoommates from "./AllRoommates";
 import { useLoaderData } from "react-router"; 
+import { Helmet } from "react-helmet-async";
 const Home = () => {
   const roommates = useLoaderData();
 
   return (
     <>
+    <Helmet>
+      <title>NestMate || Home</title>
+    </Helmet>
       <Hero />
 
       {/* Roommate Section */}

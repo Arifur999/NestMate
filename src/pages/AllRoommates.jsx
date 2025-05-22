@@ -9,6 +9,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const AllRoommates = ({ roommate }) => {
 
@@ -23,6 +24,10 @@ const AllRoommates = ({ roommate }) => {
   } = roommate;
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || Home</title>
+    </Helmet>
     <Fade triggerOnce direction="up" duration={700}>
       <div className="flex flex-col justify-between h-full rounded-2xl overflow-hidden shadow-xl bg-base-100 text-base-content border border-indigo-100 hover:shadow-2xl transition duration-300">
         <div className="p-6 flex flex-col justify-between h-full space-y-3 ">
@@ -60,6 +65,7 @@ const AllRoommates = ({ roommate }) => {
         </div>
       </div>
     </Fade>
+    </>
   );
 };
 

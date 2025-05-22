@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddRoommate = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const AddRoommate = () => {
     const formData = new FormData(form);
     const addData = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/roommates", {
+    fetch("https://assingment-10-server-gold.vercel.app/roommates", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,6 +50,10 @@ const AddRoommate = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || Add Roommates</title>
+    </Helmet>
     <div className="min-h-screen bg-base-100  py-16 px-4">
       <div className="max-w-4xl mx-auto  card bg-base-200 p-10 rounded-3xl shadow-2xl border border-indigo-100">
         <h2 className="text-4xl font-extrabold text-center text-indigo-700 mb-10">
@@ -160,6 +165,7 @@ const AddRoommate = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

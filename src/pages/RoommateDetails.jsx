@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const RoommateDetails = () => {
   const loadedRoommate = useLoaderData();
@@ -42,7 +43,7 @@ const RoommateDetails = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/roommates/${roommate._id}/like`,
+        `https://assingment-10-server-gold.vercel.app/roommates/${roommate._id}/like`,
         {
           method: "PUT",
           headers: {
@@ -88,6 +89,10 @@ const RoommateDetails = () => {
   const likeCount = roommate.likedBy?.length || 0;
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || Details</title>
+    </Helmet>
     <div className="w-11/12 mx-auto max-w-5xl my-12">
       {/* Header */}
       <div className="text-center mb-10">
@@ -166,6 +171,7 @@ const RoommateDetails = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

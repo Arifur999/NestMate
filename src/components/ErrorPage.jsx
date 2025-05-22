@@ -1,5 +1,6 @@
 import { Link, useRouteError } from "react-router";
 import { FaExclamationTriangle } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -7,6 +8,10 @@ const ErrorPage = () => {
   const status = error?.status;
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || Error</title>
+    </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-indigo-200 flex items-center justify-center px-4 py-10">
       <div className="bg-white shadow-xl rounded-3xl p-8 md:p-12 max-w-2xl w-full text-center space-y-6">
         <div className="flex justify-center text-indigo-600 text-6xl">
@@ -41,6 +46,7 @@ const ErrorPage = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

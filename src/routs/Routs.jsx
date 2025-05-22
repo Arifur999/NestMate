@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:3000/roommates"),
+        loader: () => fetch("https://assingment-10-server-gold.vercel.app/roommates"),
         hydrateFallbackElement: <Loader></Loader>,
         Component: Home,
       },
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/browse-listings",
-        loader: () => fetch("http://localhost:3000/roommates/featured"),
+        loader: () => fetch("https://assingment-10-server-gold.vercel.app/roommates/featured"),
         hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseListings,
       },
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/roommates/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/roommates/${params.id}`),
+          fetch(`https://assingment-10-server-gold.vercel.app/roommates/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRouts>
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "/roommates/update/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/roommates/${params.id}`),
+          fetch(`https://assingment-10-server-gold.vercel.app/roommates/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRouts>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Authentication/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const MyListings = () => {
   const { user } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const MyListings = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/roommates/user/${user.email}`)
+      fetch(`https://assingment-10-server-gold.vercel.app/roommates/user/${user.email}`)
         .then((res) => res.json())
         .then((data) => setListings(data))
         .catch((err) => console.error("Error fetching listings:", err));
@@ -27,7 +28,7 @@ const MyListings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/roommates/${id}`, {
+        fetch(`https://assingment-10-server-gold.vercel.app/roommates/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,6 +50,10 @@ const MyListings = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || My Listings</title>
+    </Helmet>
     <div className="min-h-screen card bg-base-200  py-10 px-4">
       <div className="max-w-6xl mx-auto bg-base-100 shadow-xl rounded-3xl p-6 sm:p-10 border border-indigo-100">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-indigo-700 mb-6 sm:mb-10">
@@ -103,6 +108,7 @@ const MyListings = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

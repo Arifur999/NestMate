@@ -5,6 +5,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { createUser, googleSignIn } = useContext(AuthContext);
@@ -63,6 +64,10 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>NestMate || SignUp</title>
+    </Helmet>
     <div className="min-h-screen flex items-center justify-center card bg-base-200 px-4">
       <div className="max-w-md w-full bg-base-100 p-8 rounded-2xl shadow-xl">
         <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">
@@ -149,6 +154,7 @@ const SignUp = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 
