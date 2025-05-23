@@ -60,8 +60,8 @@ const UpdateRoommates = () => {
   <Helmet>
       <title>NestMate || Update</title>
     </Helmet>
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white p-6">
-      <div className="max-w-2xl mx-auto bg-white p-8 shadow-xl rounded-3xl border border-indigo-100">
+    <div className="min-h-screen bg-base-100 p-6">
+      <div className="max-w-2xl mx-auto bg-base-100 p-8 shadow-xl rounded-3xl border border-indigo-100">
         <h2 className="text-3xl font-bold text-indigo-700 mb-6 text-center">
           ✏️ Update Listing
         </h2>
@@ -117,7 +117,7 @@ const UpdateRoommates = () => {
               name="roomType"
               value={formData.roomType}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-indigo-400"
+              className="w-full border border-gray-300 rounded-lg text-neutral p-2 focus:ring-2 focus:ring-indigo-400"
             >
               <option value="">Select type</option>
               <option value="Private">Private</option>
@@ -150,7 +150,7 @@ const UpdateRoommates = () => {
                 type="text"
                 value={formData.userName}
                 readOnly
-                className="w-full bg-gray-100 text-gray-600 border border-gray-300 rounded-lg p-2"
+                className="w-full bg-base-100 text-gray-600 border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div>
@@ -159,7 +159,7 @@ const UpdateRoommates = () => {
                 type="email"
                 value={formData.userEmail}
                 readOnly
-                className="w-full bg-gray-100 text-gray-600 border border-gray-300 rounded-lg p-2"
+                className="w-full bg-base-100 text-gray-600 border border-gray-300 rounded-lg p-2"
               />
             </div>
           </div>
