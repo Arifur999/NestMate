@@ -28,7 +28,7 @@ const Home = () => {
           </div>
 
           {/* Grid of Roommates */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 card bg-base-200 text-primary">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 card bg-base-200 text-primary">
             {roommates.map((roommate) => (
               <AllRoommates key={roommate._id} roommate={roommate} />
             ))}

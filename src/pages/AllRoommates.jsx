@@ -20,7 +20,6 @@ const AllRoommates = ({ roommate }) => {
     rent,
     roomType,
     availability,
-    description,
   } = roommate;
 
   return (
@@ -51,7 +50,7 @@ const AllRoommates = ({ roommate }) => {
               {availability === "available" ? <FaCheckCircle /> : <FaTimesCircle />}
               {availability}
             </p>
-            <p className="text-gray-500 line-clamp-2">{description}</p>
+            {/* <p className="text-gray-500 line-clamp-2">{description}</p> */}
           </div>
 
           <div className="flex justify-end pt-4">

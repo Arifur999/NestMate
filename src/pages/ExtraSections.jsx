@@ -4,10 +4,10 @@ import CountUp from 'react-countup';
 
 const ExtraSections = () => {
   return (
-    <div className="bg-base-100 ">
+    <div className="bg-base-100 w-11/12 mx-auto">
       {/* Section 1: Features */}
-      <section className="py-16 px-4 md:px-16 bg-base-100  text-primary">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
+      <section className=" px-4 md:px-16 bg-base-100  text-primary">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary">
           Why Choose NestMate?
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -33,26 +33,26 @@ const ExtraSections = () => {
       </section>
 
       {/* Section 2: How It Works */}
-      <section className="py-16 px-4 md:px-16 bg-base-100 text-base-content">
+      <section className="py-10 px-4 md:px-16 bg-base-100 text-base-content">
         <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12 ">
           How It Works
         </h2>
         <div className="grid md:grid-cols-3 gap-10 text-center ">
-          <div className="flex flex-col items-center card bg-base-200 p-4 hover:bg-gray-50 rounded-xl transition duration-300">
+          <div className="flex flex-col items-center card bg-base-200 p-4  rounded-xl transition duration-300">
             <UserPlus className="w-10 h-10 text-indigo-600 mb-3" />
             <h4 className="text-lg font-semibold text-primary mb-2">Create Your Profile</h4>
             <p className="text-sm text-primary max-w-xs">
               Set your location, budget, and living preferences to get started. It only takes a few minutes.
             </p>
           </div>
-          <div className="flex flex-col card bg-base-200 items-center p-4 hover:bg-gray-50 rounded-xl transition duration-300">
+          <div className="flex flex-col card bg-base-200 items-center p-4  rounded-xl transition duration-300">
             <Search className="w-10 h-10 text-purple-600 mb-3" />
             <h4 className="text-lg font-semibold text-primary mb-2">Browse & Filter</h4>
             <p className="text-sm text-primary max-w-xs">
               Explore listings or profiles, use smart filters to narrow your search, and save your top picks.
             </p>
           </div>
-          <div className="flex flex-col items-center card bg-base-200 p-4 hover:bg-gray-50 rounded-xl transition duration-300">
+          <div className="flex flex-col items-center card bg-base-200 p-4  rounded-xl transition duration-300">
             <CheckCircle className="w-10 h-10 text-pink-600 mb-3" />
             <h4 className="text-lg text-primary font-semibold mb-2">Connect & Move In</h4>
             <p className="text-sm text-primary max-w-xs">
@@ -63,7 +63,7 @@ const ExtraSections = () => {
       </section>
 
       {/* Section 3: Impact Stats */}
-      <section className="bg-base-100 py-20 px-4 md:px-16 text-base-content">
+      <section className="bg-base-100 mb-10 px-4 md:px-16 text-base-content">
   <div className="max-w-6xl mx-auto text-center mb-12">
     <h2 className="text-3xl md:text-4xl font-bold text-primary">
       Trusted by Thousands Across the Country
