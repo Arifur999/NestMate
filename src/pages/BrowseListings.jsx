@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AllRoommates from "./AllRoommates"; // Card Component
+import AllRoommates from "./AllRoommates"; 
 import { Helmet } from "react-helmet-async";
 
 const AllItemsPage = () => {
