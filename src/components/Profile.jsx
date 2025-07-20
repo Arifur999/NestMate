@@ -73,7 +73,7 @@ const Profile = () => {
         </div>
 
         {/* Right: Illustration */}
-        <div className="max-w-md w-full hidden md:block">
+        <div className="max-w-md w-full hidden lg:block">
           <img
             src="/Resume-bro.svg"
             alt="Profile Illustration"

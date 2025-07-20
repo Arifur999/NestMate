@@ -8,7 +8,7 @@ const AboutUs = () => {
           Who We Are
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Section */}
           <div className="space-y-6">
             <p className="text-lg leading-relaxed">

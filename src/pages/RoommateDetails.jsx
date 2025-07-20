@@ -108,7 +108,7 @@ const RoommateDetails = () => {
       </div>
 
       {/* Card */}
-      <div className="p-8 bg-white rounded-2xl shadow-2xl space-y-6">
+      <div className="p-8 bg-base-100 rounded-2xl shadow-2xl space-y-6">
         <div className="flex justify-between items-center">
           <h2 className="text-3xl font-bold text-indigo-700">
             {roommate.title}
@@ -156,7 +156,7 @@ const RoommateDetails = () => {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <h3 className="text-xl font-semibold text-indigo-500 mb-2">
             Description
           </h3>
           <p className="text-gray-600 leading-relaxed">
