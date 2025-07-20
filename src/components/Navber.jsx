@@ -48,10 +48,11 @@ const Navbar = () => {
   const activeLinkStyle = "text-indigo-600 dark:text-indigo-400 font-semibold";
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-md  mx-auto rounded sticky top-0 z-50 lg:px-14">
+    <header className="bg-white dark:bg-gray-900 shadow-md mx-auto rounded sticky top-0 z-50 lg:px-14">
       <Tooltip id="navbar-tooltip" place="bottom" className="z-50" />
 
-      <div className="mx-auto py-4 flex justify-between items-center">
+      <div className="mx-auto py-4 flex justify-between items-center px-4">
+        {/* Logo */}
         <NavLink
           to="/"
           className="flex items-center text-2xl font-bold text-indigo-600"
@@ -66,8 +67,8 @@ const Navbar = () => {
           </h1>
         </NavLink>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Desktop Navigation (lg and up) */}
+        <nav className="hidden lg:flex items-center gap-6">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -105,16 +106,14 @@ const Navbar = () => {
           </NavLink>
 
           {user && (
-            <>
-              <NavLink
-                to="/dashboard"
-                className={({ isActive }) =>
-                  `${linkStyle} ${isActive ? activeLinkStyle : ""}`
-                }
-              >
-                <MdDashboardCustomize /> Dashboard
-              </NavLink>
-            </>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                `${linkStyle} ${isActive ? activeLinkStyle : ""}`
+              }
+            >
+              <MdDashboardCustomize /> Dashboard
+            </NavLink>
           )}
 
           {/* Theme Toggle */}
@@ -129,7 +128,7 @@ const Navbar = () => {
             {theme === "dark" ? <BsSun /> : <BsMoon />}
           </button>
 
-          {/* Auth/Logout */}
+          {/* Auth */}
           {user ? (
             <div className="relative group" tabIndex={0}>
               <img
@@ -177,14 +176,14 @@ const Navbar = () => {
           )}
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
+        {/* Mobile / Tablet Menu Button */}
+        <div className="lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6 text-gray-700 dark:text-white"
+              className="w-7 h-7 text-gray-700 dark:text-white"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -193,18 +192,16 @@ const Navbar = () => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d={
-                  menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-                }
+                d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
               />
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile / Tablet Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg px-6 py-4 rounded-b-xl space-y-3 animate-slideDown">
+        <div className="lg:hidden bg-white dark:bg-gray-900 shadow-lg px-6 py-4 rounded-b-xl space-y-3">
           <NavLink to="/" className={linkStyle}>
             <AiOutlineHome /> Home
           </NavLink>
@@ -220,7 +217,7 @@ const Navbar = () => {
 
           {user && (
             <>
-              <NavLink to="/dashboard">
+              <NavLink to="/dashboard" className={linkStyle}>
                 <MdDashboardCustomize /> Dashboard
               </NavLink>
               <NavLink to="/add-roommate" className={linkStyle}>
@@ -236,10 +233,6 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             className="text-xl text-gray-700 dark:text-white hover:text-indigo-600 transition"
-            data-tooltip-id="navbar-tooltip"
-            data-tooltip-content={
-              theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"
-            }
           >
             {theme === "dark" ? <BsSun /> : <BsMoon />}
           </button>
