@@ -10,7 +10,7 @@ const ExtraSections = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary">
           Why Choose NestMate?
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
             <h3 className="text-xl font-semibold mb-3 text-primary">Smart Matchmaking</h3>
             <p className="text-sm text-gray-600">
@@ -37,7 +37,7 @@ const ExtraSections = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12 ">
           How It Works
         </h2>
-        <div className="grid md:grid-cols-3 gap-10 text-center ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-center ">
           <div className="flex flex-col items-center card bg-base-200 p-4  rounded-xl transition duration-300">
             <UserPlus className="w-10 h-10 text-indigo-600 mb-3" />
             <h4 className="text-lg font-semibold text-primary mb-2">Create Your Profile</h4>
@@ -73,7 +73,7 @@ const ExtraSections = () => {
     </p>
   </div>
 
-  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
     <div className="card bg-base-200 shadow-md hover:shadow-lg transition duration-300">
       <div className="card-body">
         <h3 className="text-5xl font-bold text-primary mb-2">
