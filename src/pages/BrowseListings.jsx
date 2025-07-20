@@ -30,7 +30,7 @@ const AllItemsPage = () => {
         <title>NestMate || All Roommates</title>
       </Helmet>
 
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-indigo-700 ">
+      <h1 className="text-3xl md:text-4xl pb-8 font-bold text-center text-indigo-700 ">
         🧾 All Roommate Listings
       </h1>
 

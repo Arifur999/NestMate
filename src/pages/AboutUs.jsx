@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div className="bg-base-100 text-base-content py-10 px-4 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-indigo-600">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-indigo-600">
           Who We Are
         </h2>
 
