@@ -48,7 +48,7 @@ const Navbar = () => {
   const activeLinkStyle = "text-indigo-600 dark:text-indigo-400 font-semibold";
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-md mx-auto rounded sticky top-0 z-50 lg:px-14 max-w-screen-2xl">
+    <header className="bg-white dark:bg-gray-900 shadow-md mx-auto  sticky top-0 z-50 lg:px-14 max-w-screen-2xl">
       <Tooltip id="navbar-tooltip" place="bottom" className="z-50" />
 
       <div className="mx-auto py-4 flex justify-between items-center px-4">

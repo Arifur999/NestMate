@@ -87,7 +87,7 @@ const DashboardHome = () => {
             {recentListings.map((item) => (
               <div
                 key={item._id}
-                className="bg-base-100 p-5 rounded-xl border border-indigo-100 shadow hover:shadow-lg transition"
+                className="bg-base-100 p-5 rounded-xl border border-indigo-200 shadow hover:shadow-lg transition"
               >
                 <h4 className="text-lg font-semibold text-indigo-600">{item.title}</h4>
                 <p className="text-sm text-gray-600">📍 {item.location}</p>

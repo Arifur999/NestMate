@@ -84,7 +84,7 @@ const MyListings = () => {
                 <td className="px-3 sm:px-6 py-4 flex flex-wrap gap-2">
                   <button
                     onClick={() => navigate(`/roommates/update/${listing._id}`)}
-                    className="bg-yellow-400 text-white px-3 py-1.5 cursor-pointer rounded-lg hover:bg-yellow-500 transition text-sm"
+                    className="bg-indigo-500 text-white px-3 py-1.5 cursor-pointer rounded-lg hover:bg-indigo-700 transition text-sm"
                   >
                     ✏️ Update
                   </button>
