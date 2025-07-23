@@ -21,9 +21,9 @@ const Hero = () => {
                 loop={0}
                 cursor
                 cursorStyle="_"
-                typeSpeed={80}
-                deleteSpeed={50}
-                delaySpeed={1500}
+                typeSpeed={90}
+                deleteSpeed={70}
+                delaySpeed={1800}
               />
             </span>
           </h1>
@@ -39,7 +39,7 @@ const Hero = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
           modules={[Navigation, Pagination, Autoplay]}
-          className="w-full h-full rounded"
+          className="w-full h-full"
         >
           {["/bn-4.avif", "/bn-2.jpg", "/bn-3.avif", "/bn-7.jpg", "/bannar5.jpg"].map((img, idx) => (
             <SwiperSlide key={idx}>
