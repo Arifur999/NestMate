@@ -1,36 +1,38 @@
 import React from 'react';
 import { Star, UserPlus, Search, CheckCircle } from 'lucide-react';
 import CountUp from 'react-countup';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 const ExtraSections = () => {
   return (
     <div className="bg-base-100 w-11/12 mx-auto">
       {/* Section 1: Features */}
-      <section className=" px-4 md:px-16 bg-base-100  text-primary">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary">
-          Why Choose NestMate?
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
-            <h3 className="text-xl font-semibold mb-3 text-primary">Smart Matchmaking</h3>
-            <p className="text-sm text-gray-600">
-              Our intelligent roommate-matching system uses behavior and preference data to connect you with ideal living partners.
-            </p>
-          </div>
-          <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
-            <h3 className="text-xl font-semibold mb-3 text-primary">Verified Listings</h3>
-            <p className="text-sm text-gray-600">
-              Every room and user is reviewed and verified to keep your roommate search secure, transparent, and scam-free.
-            </p>
-          </div>
-          <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
-            <h3 className="text-xl font-semibold mb-3 text-primary">Community Support</h3>
-            <p className="text-sm text-primary">
-              Get access to helpful guides, safety resources, and community chat to make co-living safe and enjoyable.
-            </p>
-          </div>
-        </div>
-      </section>
+      <section className="px-4 md:px-16 bg-base-100 text-primary">
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary flex items-center justify-center gap-3">
+    <FaQuestionCircle  className="text-primary" />
+    Why Choose NestMate?
+  </h2>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
+      <h3 className="text-xl font-semibold mb-3 text-primary">Smart Matchmaking</h3>
+      <p className="text-sm text-gray-600">
+        Our intelligent roommate-matching system uses behavior and preference data to connect you with ideal living partners.
+      </p>
+    </div>
+    <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
+      <h3 className="text-xl font-semibold mb-3 text-primary">Verified Listings</h3>
+      <p className="text-sm text-gray-600">
+        Every room and user is reviewed and verified to keep your roommate search secure, transparent, and scam-free.
+      </p>
+    </div>
+    <div className="card bg-base-200 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 text-center">
+      <h3 className="text-xl font-semibold mb-3 text-primary">Community Support</h3>
+      <p className="text-sm text-primary">
+        Get access to helpful guides, safety resources, and community chat to make co-living safe and enjoyable.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Section 2: How It Works */}
       <section className="py-10 px-4 md:px-16 bg-base-100 text-base-content">

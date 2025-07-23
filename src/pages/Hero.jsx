@@ -10,7 +10,7 @@ import { Link } from 'react-router';
 const Hero = () => {
   return (
     <>
-      <div className="relative  mx-auto h-[400px] md:h-[500px] lg:h-[70vh] max-w-screen-2xl rounded">
+      <div className="relative  mx-auto h-[400px] md:h-[500px] lg:h-[70vh] max-w-screen-2xl ">
         {/* Text Overlay */}
         <div className="absolute top-1/4 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center px-4">
           <h1 className="text-2xl md:text-5xl font-bold text-white drop-shadow-md">
